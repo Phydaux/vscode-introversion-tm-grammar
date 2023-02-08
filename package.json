@@ -1,0 +1,25 @@
+{
+  "name": "vscode-introversion-tm-grammar",
+  "displayName": "Unofficial Introversion Save and Config Files",
+  "description": "Unofficial language grammar for Introversion's save and config files",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "introversion",
+      "aliases": ["Introversion Object Notation", "introversion"],
+      "extensions": [".space",".ship",".prison"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "introversion",
+      "scopeName": "text.introversion",
+      "path": "./syntaxes/introversion.tmLanguage.json"
+    }]
+  }
+}

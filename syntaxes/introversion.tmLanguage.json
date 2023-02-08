@@ -1,0 +1,143 @@
+{
+    "name": "Introversion Object Notation",
+    "scopeName": "text.introversion",
+    "patterns": [
+        {
+            "include": "#begin-block"
+        },
+        {
+            "include": "#begin-block-inline"
+        },
+        {
+            "include": "#key-value-pair"
+        }
+    ],
+    "repository": {
+        "begin-block": {
+            "name": "meta.scope.begin-block.introversion",
+            "begin": "(^|\\G)(\\s*)(BEGIN) ([a-zA-Z]+|\"[^\"]+\")\\s+$",
+            "beginCaptures": {
+                "3": {
+                    "name": "keyword.control.introversion"
+                },
+                "4": {
+                    "name": "entity.name.section.introversion"
+                }
+            },
+            "end": "(^|\\G)(\\2)(END)\\s*$",
+            "endCaptures": {
+                "3": {
+                    "name": "keyword.control.introversion"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "$self"
+                },
+                {
+                    "include": "#invalid-string"
+                },
+                {
+                    "include": "#begin-block-inline"
+                },
+                {
+                    "include": "#key-value-pair"
+                }
+            ]
+        },
+        "begin-block-inline": {
+            "name": "meta.scope.begin-block-inline.introversion",
+            "begin": "\\b(BEGIN)\\b ([a-zA-Z0-9\\.,+/-]+|\"[^\"]+\")",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.control.introversion"
+                },
+                "2": {
+                    "name": "entity.name.section.introversion"
+                }
+            },
+            "end": "\\b(END)\\b",
+            "endCaptures": {
+                "1": {
+                    "name": "keyword.control.introversion"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#invalid-string"
+                },
+                {
+                    "include": "#key-value-pair"
+                }
+            ]
+        },
+        "key-value-pair": {
+            "name": "meta.scope.key-value-pair.introversion",
+            "match": "([a-zA-Z0-9\\.]+|\"[^\"]+\")\\s+(\"[^\"]+\"|[^\"\\s]+)",
+            "captures": {
+                "1": {
+                    "name": "support.type.property-name.introversion"
+                },
+                "2": {
+                    "name": "support.type.property-value.introversion",
+                    "patterns": [
+                        {
+                            "include": "#constant"
+                        },
+                        {
+                            "include": "#numbers"
+                        },
+                        {
+                            "include": "#invalid-string"
+                        },
+                        {
+                            "include": "#quoted-string"
+                        },
+                        {
+                            "include": "#unquoted-string"
+                        }
+                    ]
+                }
+            }
+        },
+        "constant": {
+            "match": "\\b(?:true|false)\\b",
+            "name": "constant.language.introversion"
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.float.introversion",
+                    "match": "[+-]?\\d+(?:(\\.)\\d+(?:e[+-]?\\d+)?|(?:e[+-]?\\d+))"
+                },
+                {
+                    "name": "constant.numeric.integer.introversion",
+                    "match": "(\\+|\\-)[\\d]+"
+                },
+                {
+                    "name": "constant.numeric.natural.introversion",
+                    "match": "[\\d]+"
+                }
+            ]
+        },
+        "invalid-string": {
+            "name": "invalid.illegal.unterminated-string.introversion",
+            "match": "\"[^\"]+$"
+        },
+        "quoted-string": {
+            "name": "string.quoted.double.introversion",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.sequence.introversion",
+                    "match": "\\\\(?:[\"$\\\\/bfnrt]|[u][a-fA-F0-9]{4})"
+                }
+            ]
+        },
+        "unquoted-string": {
+            "name": "string.unquoted.introversion",
+            "match": "[^\\s]+"
+        }
+    }
+}
