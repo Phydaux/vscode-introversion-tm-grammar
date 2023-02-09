@@ -4,7 +4,7 @@ This is an unofficial VSCode language grammar for Introversion's text-based conf
 
 ## Features
 
-Provides typical scoping of the different sections of a config or save file. It has been tested with files from Introversion's game [The Last Starship](https://www.introversion.co.uk/last-starship/). It should work with `.space` and `.ship` files, it should also work the the `definitions.txt` file and other config files that use this type of notation.
+Syntax colouring for save and config files from Introversion's games. Provides typical scoping of the different sections of a config or save file. It has been tested with files from [The Last Starship](https://www.introversion.co.uk/last-starship/). It should work with `.space` and `.ship` files, it should also work the the `definitions.txt` file and other config files that use this type of notation.
 
 ![example "The Last Starship" save file](images/example.png)
 
@@ -29,4 +29,4 @@ The colours should match your installed theme's colours but if you want to custo
 
 You can find the scope you want to change by moving the cursor over the section you want to inspect and using the `Developer: Inspect Editor Tokens and Scopes` command.
 
-The name of the language in the language mode dropdown/picker is "Introversion Object Notation"
+The name of the language in the language mode dropdown/picker is "Introversion Object Notation".
